@@ -6,11 +6,13 @@ stages:
 before_script:
   - apt-get update -qy
   - apt-get install -y python3-pip
+  - pip3 install -r requirements.txt
 
 build:
   stage: build
   script:
-    - pip3 install -r requirements.txt
+    - echo "Flask" > requirements.txt
+    - echo "pytest" >> requirements.txt
 
 test:
   stage: test
@@ -37,4 +39,3 @@ deploy:
     - echo "Deploy to production environment"
   only:
     - master
-
