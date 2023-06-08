@@ -6,13 +6,12 @@ stages:
 image: python:3.8
 
 before_script:
-  - pip install -U pip
+  - echo "Flask" > requirements.txt
+  - echo "pytest" >> requirements.txt
 
 build:
   stage: build
   script:
-    - echo "Flask" > requirements.txt
-    - echo "pytest" >> requirements.txt
     - pip install -r requirements.txt
 
 test:
