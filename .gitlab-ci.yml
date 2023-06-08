@@ -3,16 +3,17 @@ stages:
   - test
   - deploy
 
+image: python:3.8
+
 before_script:
-  - apt-get update -qy
-  - apt-get install -y python3-pip
-  - pip3 install -r requirements.txt
+  - pip install -U pip
 
 build:
   stage: build
   script:
     - echo "Flask" > requirements.txt
     - echo "pytest" >> requirements.txt
+    - pip install -r requirements.txt
 
 test:
   stage: test
